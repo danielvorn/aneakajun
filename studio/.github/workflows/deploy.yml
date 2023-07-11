@@ -1,0 +1,23 @@
+name: Deploy Sanity
+on:
+  push:
+    branches: [main]
+jobs:
+  sanity-deploy:
+    runs-on: ubuntu-latest
+    name: Deploy Sanity
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Create env file
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > .env
+      - name: Install, build, and upload your site
+        uses: withastro/action@v0
+      - name: Install dependencies
+        run: yarn install
+      - name: Deploy Sanity Studio
+        run: |
+          npx @sanity/cli deploy
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}

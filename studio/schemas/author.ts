@@ -11,6 +11,12 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'nationality',
+      title: 'Nationality',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'nationality'}}],
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -22,6 +28,14 @@ export default defineType({
     defineField({
       name: 'image',
       title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: 'flag',
+      title: 'Flag',
       type: 'image',
       options: {
         hotspot: true,

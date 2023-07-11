@@ -5,10 +5,10 @@ import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'perfect-10',
+  title: 'aneakajun',
 
-  projectId: 'kgcq11vi',
-  dataset: 'production',
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID ?? '',
+  dataset: process.env.SANITY_STUDIO_DATASET ?? '',
 
   plugins: [deskTool(), visionTool()],
 
